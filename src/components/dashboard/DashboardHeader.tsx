@@ -12,8 +12,8 @@ interface DashboardHeaderProps {
 }
 
 export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ 
-  searchQuery, 
-  onSearchChange,
+  /* searchQuery, */
+  /* onSearchChange, */
   toggleSidebar 
 }) => {
   const logout = useAuthStore(state => state.logout);

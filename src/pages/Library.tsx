@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StudentDashboardLayout } from '../layouts/StudentDashboardLayout';
-import { Library as LibraryIcon, FileText, Video, Download, Search } from 'lucide-react';
+import { Library as LibraryIcon, FileText, Video, Download /*, Search */ } from 'lucide-react';
 import { CategoryScroller } from '../components/dashboard/CategoryScroller';
 
 export const Library: React.FC = () => {

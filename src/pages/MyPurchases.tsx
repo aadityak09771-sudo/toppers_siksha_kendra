@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StudentDashboardLayout } from '../layouts/StudentDashboardLayout';
-import { ShoppingBag, Calendar, Download, CheckCircle2, ChevronRight, Search } from 'lucide-react';
-import { DASHBOARD_COURSES } from '../config/studentData';
+import { ShoppingBag, /* Calendar, */ Download, CheckCircle2 /*, ChevronRight, Search */ } from 'lucide-react';
+/* import { DASHBOARD_COURSES } from '../config/studentData'; */
 
 export const MyPurchases: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
