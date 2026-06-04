@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, CheckCircle2, Globe, Clock, Calendar, Star, ShoppingCart } from 'lucide-react';
 import type { DashboardCourse } from '../../config/studentData';
+import { useCartStore } from '../../store/useCartStore';
 
 interface CourseDetailsModalProps {
   course: DashboardCourse | null;
@@ -17,6 +19,8 @@ export const CourseDetailsModal: React.FC<CourseDetailsModalProps> = ({
   onStartLearning,
   actionText
 }) => {
+  const navigate = useNavigate();
+  const addToCart = useCartStore(state => state.addToCart);
   if (!course || !isOpen) return null;
 
   const highlights = course.highlights && course.highlights.length > 0 
@@ -26,6 +30,22 @@ export const CourseDetailsModal: React.FC<CourseDetailsModalProps> = ({
   const subjects = course.subjects && course.subjects.length > 0
     ? course.subjects
     : ["Physics", "Chemistry", "Mathematics", "Biology"];
+
+  const handleAction = (isBuyNow: boolean) => {
+    if (actionText === 'Start Learning') {
+      onStartLearning(course);
+      return;
+    }
+    addToCart({
+      id: course.id,
+      title: course.title,
+      price: course.price,
+      originalPrice: course.originalPrice || '',
+      image: course.thumbnail || '/assets/images/course.png',
+      category: course.category
+    });
+    if (isBuyNow) navigate('/dashboard/cart');
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -202,14 +222,14 @@ export const CourseDetailsModal: React.FC<CourseDetailsModalProps> = ({
               <div className="flex flex-col sm:flex-row gap-3">
                 <button 
                   className="flex-1 h-[50px] rounded-[14px] bg-gradient-to-r from-[#ff8a33] to-[#ff6b00] hover:from-[#ff6b00] hover:to-[#e45e00] text-white font-[700] text-[14px] flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(255,107,0,0.2)] hover:-translate-y-[2px] transition-all duration-300"
-                  onClick={() => onStartLearning(course)}
+                  onClick={() => handleAction(true)}
                 >
                   <ShoppingCart size={20} />
                   {actionText || 'Buy Now'}
                 </button>
                 <button 
                   className="flex-1 h-[50px] rounded-[14px] bg-white border-2 border-[#ff6b00] text-[#ff6b00] font-[700] text-[14px] hover:bg-[#fffaf6] transition-colors flex items-center justify-center"
-                  onClick={() => onStartLearning(course)}
+                  onClick={() => { handleAction(false); alert("Added to Cart"); }}
                 >
                   Add To Cart
                 </button>

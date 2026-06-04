@@ -71,6 +71,7 @@ export const DashboardCourses: React.FC = () => {
                   course={course}
                   onViewDetails={handleViewDetails}
                   onStartLearning={handleStartLearning}
+                  actionText="Enroll Now"
                 />
               ))}
             </div>

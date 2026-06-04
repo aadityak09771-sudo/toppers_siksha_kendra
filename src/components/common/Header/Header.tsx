@@ -11,6 +11,8 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const openAuthModal = useAuthStore(state => state.openAuthModal);
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const logout = useAuthStore(state => state.logout);
   const location = useLocation();
 
   const isActive = (path: string) => {
@@ -90,9 +92,22 @@ export const Header: React.FC = () => {
 
         {/* Actions */}
         <div className="header-actions">
-            <Button type="button" variant="primary" size="sm" onClick={openAuthModal} className="auth-button">
-                Login / Register
-            </Button>
+            {isLoggedIn ? (
+              <>
+                <Link to="/dashboard" className="hidden sm:block">
+                  <Button type="button" variant="outline" size="sm" className="border-2 border-[#ff6b00] text-[#ff6b00] hover:bg-[#fffaf6]">
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button type="button" variant="primary" size="sm" onClick={logout} className="auth-button bg-[#0a2458] hover:bg-[#071b4d]">
+                  Log Out
+                </Button>
+              </>
+            ) : (
+              <Button type="button" variant="primary" size="sm" onClick={openAuthModal} className="auth-button">
+                  Login / Register
+              </Button>
+            )}
             <button className="mobile-menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -128,9 +143,22 @@ export const Header: React.FC = () => {
           </ul>
           
           <div className="mobile-sidebar-actions">
-            <Button type="button" variant="primary" size="lg" onClick={() => { openAuthModal(); toggleMenu(); }} className="w-full">
-                Login / Register
-            </Button>
+            {isLoggedIn ? (
+              <div className="flex flex-col gap-3 w-full">
+                <Link to="/dashboard" className="w-full" onClick={toggleMenu}>
+                  <Button type="button" variant="outline" size="lg" className="w-full border-2 border-[#ff6b00] text-[#ff6b00] hover:bg-[#fffaf6] bg-white">
+                    Go to Dashboard
+                  </Button>
+                </Link>
+                <Button type="button" variant="primary" size="lg" onClick={() => { logout(); toggleMenu(); }} className="w-full bg-[#0a2458] hover:bg-[#071b4d]">
+                    Log Out
+                </Button>
+              </div>
+            ) : (
+              <Button type="button" variant="primary" size="lg" onClick={() => { openAuthModal(); toggleMenu(); }} className="w-full">
+                  Login / Register
+              </Button>
+            )}
           </div>
         </nav>
       </div>

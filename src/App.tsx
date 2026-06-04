@@ -20,8 +20,10 @@ import { Library } from './pages/Library';
 import { MyPurchases } from './pages/MyPurchases';
 import { DashboardCourses } from './pages/DashboardCourses';
 import { TestSeries } from './pages/TestSeries';
+import { Cart } from './pages/Cart';
+import { Checkout } from './pages/Checkout';
 import { StudentDashboardLayout } from './layouts/StudentDashboardLayout';
-import { PublicRoute } from './components/common/PublicRoute';
+// import { PublicRoute } from './components/common/PublicRoute';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { ScrollToTop } from './utils/ScrollToTop';
 
@@ -35,13 +37,13 @@ const App: React.FC = () => {
         <Route path="*" element={
           <MainLayout>
             <Routes>
-              <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
-              <Route path="/about" element={<PublicRoute><About /></PublicRoute>} />
-              <Route path="/contact" element={<PublicRoute><Contact /></PublicRoute>} />
-              <Route path="/course-listing" element={<PublicRoute><CourseListing /></PublicRoute>} />
-              <Route path="/courses" element={<PublicRoute><Courses /></PublicRoute>} />
-              <Route path="/courses/:id" element={<PublicRoute><CourseDetails /></PublicRoute>} />  
-              <Route path="/select-goal" element={<PublicRoute><GoalSelection /></PublicRoute>} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/course-listing" element={<CourseListing />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:id" element={<CourseDetails />} />  
+              <Route path="/select-goal" element={<GoalSelection />} />
               
               {/* Dashboard Routes */}
               <Route path="/dashboard" element={<PrivateRoute><MyCourses /></PrivateRoute>} />
@@ -49,6 +51,10 @@ const App: React.FC = () => {
               <Route path="/my-purchases" element={<PrivateRoute><MyPurchases /></PrivateRoute>} />
               <Route path="/dashboard/courses" element={<PrivateRoute><DashboardCourses /></PrivateRoute>} />
               <Route path="/dashboard/tests" element={<PrivateRoute><TestSeries /></PrivateRoute>} />
+              <Route path="/dashboard/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+              <Route path="/student/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+              <Route path="/dashboard/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
+              <Route path="/student/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
               <Route 
                 path="/dashboard/profile" 
                 element={
@@ -91,10 +97,10 @@ const App: React.FC = () => {
               />
               
               <Route path="/learning/:id" element={<PrivateRoute><LearningRoom /></PrivateRoute>} />
-              <Route path="/category" element={<PublicRoute><BoardSelection /></PublicRoute>} />
-              <Route path="/faqs" element={<PublicRoute><Faqs /></PublicRoute>} />
-              <Route path="/privacy" element={<PublicRoute><Privacy /></PublicRoute>} />
-              <Route path="/terms" element={<PublicRoute><Terms /></PublicRoute>} />
+              <Route path="/category" element={<BoardSelection />} />
+              <Route path="/faqs" element={<Faqs />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
             </Routes>
           </MainLayout>
         } />

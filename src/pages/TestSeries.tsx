@@ -7,12 +7,14 @@ import { TestSeriesCard } from '../components/dashboard/TestSeriesCard';
 import { CourseDetailsModal } from '../components/dashboard/CourseDetailsModal';
 import type { DashboardCourse } from '../config/studentData';
 import type { TestSeries as TestSeriesType } from '../config/testSeriesData';
+import { useCartStore } from '../store/useCartStore';
 
 export const TestSeries: React.FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCourse, setSelectedCourse] = useState<DashboardCourse | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const addToCart = useCartStore(state => state.addToCart);
 
   const filteredSeries = TEST_SERIES_DATA.filter(series => 
     series.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -47,7 +49,15 @@ export const TestSeries: React.FC = () => {
 
   const handleBuyNow = (series: TestSeriesType) => {
     setIsModalOpen(false);
-    navigate(`/courses/${series.id}`);
+    addToCart({
+      id: `ts_${series.id}`,
+      title: series.title,
+      price: `₹${series.price}`,
+      originalPrice: `₹${series.oldPrice}`,
+      image: series.image,
+      category: series.category
+    });
+    navigate('/dashboard/cart');
   };
 
   return (

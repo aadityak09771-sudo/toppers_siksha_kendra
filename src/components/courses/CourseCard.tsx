@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Calendar, /* Monitor, */ BookOpen, Clock } from 'lucide-react';
 import type { Course } from '../../types/courses';
 import { Button } from '../ui/Button';
+import { useCartStore } from '../../store/useCartStore';
 
 interface CourseCardProps {
   course: Course;
@@ -10,6 +11,7 @@ interface CourseCardProps {
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   const navigate = useNavigate();
+  const addToCart = useCartStore(state => state.addToCart);
   const discountAmount = course.originalPrice - course.price;
   const discountPercentage = Math.round((discountAmount / course.originalPrice) * 100);
 
@@ -76,6 +78,18 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             <Button 
               variant="solid" 
               className="flex-1 rounded-xl h-10 text-xs bg-[#ff6b00] hover:bg-[#e45e00] text-white border-none shadow-md shadow-orange-500/20 transition-all"
+              onClick={(e) => {
+                e.stopPropagation();
+                addToCart({
+                  id: course.id.toString(),
+                  title: course.title,
+                  price: `₹${course.price.toLocaleString()}`,
+                  originalPrice: `₹${course.originalPrice.toLocaleString()}`,
+                  image: course.image || '/assets/images/course.png',
+                  category: course.category
+                });
+                navigate('/dashboard/cart');
+              }}
             >
               Buy Now
             </Button>

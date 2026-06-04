@@ -3,6 +3,7 @@ import { Users } from 'lucide-react';
 import type { CommonCourse } from '../../types/entities';
 import { useAuthStore } from '../../store/useAuthStore';
 import { Button } from '../ui/Button';
+import { useCartStore } from '../../store/useCartStore';
 
 interface CourseCardProps {
   course: CommonCourse;
@@ -13,15 +14,22 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, showExplore = tr
   const navigate = useNavigate();
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const openAuthModal = useAuthStore(state => state.openAuthModal);
+  const addToCart = useCartStore(state => state.addToCart);
 
   const handleAction = () => {
     if (!isLoggedIn) {
       openAuthModal();
     } else {
-      // Enrollment logic or redirect to details
-      if (course.id) {
-        navigate(`/courses/${course.id}`);
-      }
+      addToCart({
+        id: course.id?.toString() || Math.random().toString(),
+        title: course.title,
+        // Fallbacks for data shape differences
+        price: (course as any).price || '₹4,999',
+        originalPrice: (course as any).originalPrice || '₹8,000',
+        image: course.image.replace(/^\.\//, '/'),
+        category: course.audience || 'Course'
+      });
+      navigate('/dashboard/cart');
     }
   };
 

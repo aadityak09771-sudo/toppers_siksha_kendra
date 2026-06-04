@@ -5,6 +5,7 @@ import { Skeleton } from '../../ui/Skeleton/Skeleton';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { CourseDetailsModal } from '../../dashboard/CourseDetailsModal';
 import type { DashboardCourse } from '../../../config/studentData';
+import { useCartStore } from '../../../store/useCartStore';
 import './CourseDiscovery.css';
 
 interface ApiCourse {
@@ -42,17 +43,26 @@ interface CourseCardProps extends DiscoveryCourse {
 }
 
 const CourseCard: React.FC<CourseCardProps> = (props) => {
-  const { id, title, description, price, originalPrice, discountPercentage, image, lessons, duration, onViewDetails } = props;
+  const { id, subject, title, description, price, originalPrice, discountPercentage, image, /* buttonText, */ lessons, duration, onViewDetails } = props;
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const openAuthModal = useAuthStore(state => state.openAuthModal);
   const navigate = useNavigate();
+  const addToCart = useCartStore(state => state.addToCart);
 
   const handleBuy = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isLoggedIn) {
       openAuthModal();
     } else {
-      navigate(`/courses/${id}`);
+      addToCart({
+        id: id.toString(),
+        title: title,
+        price: price,
+        originalPrice: originalPrice,
+        image: image,
+        category: subject
+      });
+      navigate('/dashboard/cart');
     }
   };
 

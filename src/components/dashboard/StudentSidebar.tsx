@@ -10,7 +10,8 @@ import {
   Info,
   ShieldCheck,
   Store,
-  FileText
+  FileText,
+  Home
 } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { LogoutModal } from './LogoutModal';
@@ -48,6 +49,7 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({ isOpen, toggleSi
     {
       title: 'Learn Online',
       items: [
+        { name: 'Back to Home', icon: <Home size={22} />, path: '/' },
         { name: 'My Dashboard', icon: <LayoutDashboard size={22} />, path: '/dashboard' },
         { name: 'Library', icon: <Library size={22} />, path: '/library' },
         { name: 'My Purchases', icon: <ShoppingBag size={22} />, path: '/my-purchases' },

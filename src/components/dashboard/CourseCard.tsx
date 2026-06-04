@@ -1,14 +1,37 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BookOpen, Globe } from 'lucide-react';
 import type { DashboardCourse } from '../../config/studentData';
+import { useCartStore } from '../../store/useCartStore';
 
 interface CourseCardProps {
   course: DashboardCourse;
   onViewDetails?: (course: DashboardCourse) => void;
   onStartLearning?: (course: DashboardCourse) => void;
+  actionText?: string;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course, onViewDetails, onStartLearning }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({ course, onViewDetails, onStartLearning, actionText }) => {
+  const navigate = useNavigate();
+  const addToCart = useCartStore(state => state.addToCart);
+
+  const handleAction = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (actionText === 'Enroll Now' || actionText === 'Buy Now') {
+      addToCart({
+        id: course.id,
+        title: course.title,
+        price: course.price,
+        originalPrice: course.originalPrice || '',
+        image: course.thumbnail || '/assets/images/course.png',
+        category: course.category
+      });
+      navigate('/dashboard/cart');
+    } else {
+      onStartLearning?.(course);
+    }
+  };
+
   return (
     <article className="group bg-white rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,107,0,0.12)] border border-[#f1f5f9] hover:border-[#ff6b00]/30 flex flex-col h-full cursor-pointer" onClick={() => onViewDetails?.(course)}>
       <div className="relative h-[200px] overflow-hidden">
@@ -70,10 +93,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onViewDetails, o
               Details
             </button>
             <button 
-              onClick={(e) => { e.stopPropagation(); onStartLearning?.(course); }}
+              onClick={handleAction}
               className="flex-1 py-3 px-4 rounded-xl bg-[#ff6b00] hover:bg-[#e65c00] text-white font-bold text-sm shadow-md shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-1"
             >
-              Start Learning
+              {actionText || 'Start Learning'}
             </button>
           </div>
         </div>

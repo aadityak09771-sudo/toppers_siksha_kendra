@@ -1,32 +1,30 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Header } from '../components/common/Header/Header';
 import Footer from '../components/common/ExpertThoughts/Footer';
 
-import { AuthModal } from '../components/common/AuthModal/AuthModal';
-import { useAuthStore } from '../store/useAuthStore';
+export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const location = useLocation();
 
-interface MainLayoutProps {
-  children: React.ReactNode;
-}
-
-export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  // Check if the current URL belongs to the Student Dashboard
+  const isDashboardRoute = 
+    location.pathname.startsWith('/dashboard') || 
+    location.pathname.startsWith('/learning') || 
+    location.pathname.startsWith('/student') || 
+    location.pathname === '/library' || 
+    location.pathname === '/my-purchases';
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Global Mobile Fixes */}
-      <style>{`
-        html, body {
-          overflow-x: hidden;
-          width: 100%;
-        }
-      `}</style>
-      {!isLoggedIn && <Header />}
+    <div className="flex flex-col min-h-screen">
+      {/* Only hide the public Header if we are actively inside the Dashboard */}
+      {!isDashboardRoute && <Header />}
+      
       <main className="flex-grow">
         {children}
       </main>
-      {!isLoggedIn && <Footer />}
-      <AuthModal />
+
+      {/* Only hide the public Footer if we are actively inside the Dashboard */}
+      {!isDashboardRoute && <Footer />}
     </div>
   );
 };
