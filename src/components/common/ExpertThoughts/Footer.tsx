@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Column 4: Social Links */}
-        <div className="footer-column">
+        {/* <div className="footer-column">
           <h3 className="footer-title">Follow Us</h3>
           <div className="social-links-list">
             <a href="#" className="social-item">
@@ -106,11 +106,11 @@ const Footer: React.FC = () => {
               <span>YouTube</span>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="copyright-bar">
-        © 2026 Topper Siksha Kendra. All rights reserved.
+        © 2026 Topper's Siksha Kendra. All rights reserved.
       </div>
     </footer>
   );
