@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           <div className="footer-contact-list">
             <div className="contact-item">
               <div className="footer-contact-icon"><Mail size={16} /></div>
-              <span>support@Topper'ssikhakendra.com</span>
+              <span>contact@Topperssikshakendra.com</span>
             </div>
             <div className="contact-item">
               <div className="footer-contact-icon"><Phone size={16} /></div>

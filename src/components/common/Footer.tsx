@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3 text-gray-400">
               <Mail size={18} className="text-[#ff6b00]" />
               <a href="mailto:support@sikshakendra.com" className="hover:text-white transition-colors text-sm">
-                support@sikshakendra.com
+                contact@topperssikshakendra.com
               </a>
             </div>
             <div className="flex items-center gap-3 text-gray-400">
