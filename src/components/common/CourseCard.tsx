@@ -26,7 +26,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, showExplore = tr
         // Fallbacks for data shape differences
         price: (course as any).price || '₹4,999',
         originalPrice: (course as any).originalPrice || '₹8,000',
-        image: course.image.replace(/^\.\//, '/'),
+        image: course.image ? course.image.replace(/^\.\//, '/') : '/assets/images/course.png',
         category: course.audience || 'Course'
       });
       navigate('/dashboard/cart');

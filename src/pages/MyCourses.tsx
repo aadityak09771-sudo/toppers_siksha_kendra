@@ -88,6 +88,7 @@ export const MyCourses: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onStartLearning={handleStartLearning}
+        actionText="Start Learning"
       />
     </StudentDashboardLayout>
   );

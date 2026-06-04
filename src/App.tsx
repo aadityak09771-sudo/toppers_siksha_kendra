@@ -23,14 +23,16 @@ import { TestSeries } from './pages/TestSeries';
 import { Cart } from './pages/Cart';
 import { Checkout } from './pages/Checkout';
 import { StudentDashboardLayout } from './layouts/StudentDashboardLayout';
-// import { PublicRoute } from './components/common/PublicRoute';
+import { PublicRoute } from './components/common/PublicRoute';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { ScrollToTop } from './utils/ScrollToTop';
+import { AuthModal } from './components/common/AuthModal/AuthModal';
 
 const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <AuthModal />
       <Routes>
         {/* Standalone Pages (No Main Header/Footer) */}        
         {/* Main Layout Pages */}
