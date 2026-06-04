@@ -27,14 +27,14 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3 text-gray-400">
               <Phone size={18} className="text-[#ff6b00]" />
               <a href="tel:+919876543210" className="hover:text-white transition-colors text-sm">
-                +91 9876 543 210
+                +91 9956660896 , +91 9365106332
               </a>
             </div>
             <div className="flex items-start gap-3 text-gray-400">
               <MapPin size={18} className="text-[#ff6b00] mt-1" />
               <span className="text-sm leading-relaxed">
-                Sector 62, Noida,<br />
-                Uttar Pradesh, India
+                ,<br />Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Karadeo
+                Kanpur, Uttar Pradesh, 208005, India
               </span>
             </div>
           </div>
