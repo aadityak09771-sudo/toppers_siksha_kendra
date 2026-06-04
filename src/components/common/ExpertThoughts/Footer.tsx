@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaInstagram, FaTelegram, FaYoutube } from 'react-icons/fa';
+/* import { FaFacebook, FaTwitter, FaInstagram, FaTelegram, FaYoutube } from 'react-icons/fa'; */
 import './Footer.css';
 
 const quickLinks = [
