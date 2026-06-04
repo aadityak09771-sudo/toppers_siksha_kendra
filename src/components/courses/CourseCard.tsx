@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Monitor, BookOpen, Clock } from 'lucide-react';
+import { Calendar, /* Monitor, */ BookOpen, Clock } from 'lucide-react';
 import type { Course } from '../../types/courses';
 import { Button } from '../ui/Button';
 

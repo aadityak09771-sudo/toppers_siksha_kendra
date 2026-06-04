@@ -42,7 +42,7 @@ interface CourseCardProps extends DiscoveryCourse {
 }
 
 const CourseCard: React.FC<CourseCardProps> = (props) => {
-  const { id, subject, title, description, price, originalPrice, discountPercentage, image, buttonText, lessons, duration, onViewDetails } = props;
+  const { id, /* subject, */ title, description, price, originalPrice, discountPercentage, image, /* buttonText, */ lessons, duration, onViewDetails } = props;
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const openAuthModal = useAuthStore(state => state.openAuthModal);
   const navigate = useNavigate();
