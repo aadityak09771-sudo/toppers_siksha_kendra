@@ -47,15 +47,16 @@ const Footer: React.FC = () => {
           <div className="footer-contact-list">
             <div className="contact-item">
               <div className="footer-contact-icon"><Mail size={16} /></div>
-              <span>support@sikhakendra.com</span>
+              <span>support@Topper'ssikhakendra.com</span>
             </div>
             <div className="contact-item">
               <div className="footer-contact-icon"><Phone size={16} /></div>
-              <span>+91 12345 67890</span>
+              <span> +91 9956660896 , +91 9365106332</span>
             </div>
             <div className="contact-item">
               <div className="footer-contact-icon"><MapPin size={16} /></div>
-              <span>123, Education Hub, New Delhi, India</span>
+              <span>Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Karadeo
+                Kanpur, Uttar Pradesh, 208005, India</span>
             </div>
           </div>
         </div>
