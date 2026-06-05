@@ -28,7 +28,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onViewDetails, o
       });
       navigate('/dashboard/cart');
     } else {
-      onStartLearning?.(course);
+      if (onStartLearning) {
+        onStartLearning(course);
+      } else {
+        navigate(`/student/course/${course.id}/learn`);
+      }
     }
   };
 

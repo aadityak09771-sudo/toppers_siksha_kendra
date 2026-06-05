@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-start gap-3 text-gray-400">
               <MapPin size={18} className="text-[#ff6b00] mt-1" />
               <span className="text-sm leading-relaxed">
-                ,<br />Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Karadeo
+                ,<br />Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Kakadeo
                 Kanpur, Uttar Pradesh, 208005, India
               </span>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, LogOut, User, ShoppingCart } from 'lucide-react';
+import { Menu, LogOut, User, ShoppingCart, Home } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { STUDENT_PROFILE } from '../../config/studentProfile';
 import { LogoutModal } from './LogoutModal';
@@ -106,6 +106,17 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
                 >
                   <User size={18} />
                   My Profile
+                </button>
+                <div className="h-px bg-gray-100 mx-2"></div>
+                <button 
+                  onClick={() => {
+                    navigate('/');
+                    setShowProfileMenu(false);
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  <Home size={18} />
+                  Back to Home
                 </button>
                 <div className="h-px bg-gray-100 mx-2"></div>
                 <button 

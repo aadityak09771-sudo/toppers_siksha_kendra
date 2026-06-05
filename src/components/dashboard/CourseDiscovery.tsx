@@ -72,7 +72,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
   };
 
   return (
-    <div className="premium-course-card">
+    <div className="premium-course-card flex flex-col h-full">
       <div className="course-image-wrapper">
         <img 
           src={image} 
@@ -80,7 +80,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
           onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x250/f3f4f6/a1a1aa?text=Course+Image'; }}
         />
       </div>
-      <div className="course-content">
+      <div className="course-content flex flex-col flex-grow">
         <h3>{title}</h3>
         <p>{description}</p>
         
@@ -99,7 +99,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
           )}
         </div>
 
-        <div className="course-actions">
+        <div className="course-actions mt-auto">
           <button className="details-btn" onClick={handleDetails}>Details</button>
           <button className="buy-btn" onClick={handleBuy}>Buy Now</button>
         </div>
@@ -269,7 +269,7 @@ export const CourseDiscovery: React.FC = () => {
 
   const handleStartLearning = (course: DashboardCourse) => {
     setIsModalOpen(false);
-    navigate(`/courses/${course.id}`);
+    navigate(`/student/course/${course.id}/learn`);
   };
 
   return (

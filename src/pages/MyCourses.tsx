@@ -28,7 +28,7 @@ export const MyCourses: React.FC = () => {
 
   const handleStartLearning = (course: DashboardCourse) => {
     setIsModalOpen(false);
-    navigate(`/courses/${course.id}`);
+    navigate(`/student/course/${course.id}/learn`);
   };
 
   return (

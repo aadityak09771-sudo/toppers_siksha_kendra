@@ -72,7 +72,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
   };
 
   return (
-    <div className="premium-course-card group hover:shadow-[0_15px_40px_rgba(255,107,0,0.12)] hover:border-[#ff6b00]/30 hover:-translate-y-2 transition-all duration-300">
+    <div className="premium-course-card group hover:shadow-[0_15px_40px_rgba(255,107,0,0.12)] hover:border-[#ff6b00]/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full">
       <div className="course-image-wrapper">
         <img 
           src={image} 
@@ -84,7 +84,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
           }}
         />
       </div>
-      <div className="course-content">
+      <div className="course-content flex flex-col flex-grow">
         <h3>{title}</h3>
         <p>{description}</p>
         
@@ -103,7 +103,7 @@ const CourseCard: React.FC<CourseCardProps> = (props) => {
           )}
         </div>
 
-        <div className="course-actions">
+        <div className="course-actions mt-auto">
           <button className="details-btn" onClick={handleDetails}>Details</button>
           <button className="buy-btn" onClick={handleBuy}>Buy Now</button>
         </div>
@@ -270,7 +270,7 @@ export const CourseDiscovery: React.FC = () => {
 
   const handleStartLearning = (course: DashboardCourse) => {
     setIsModalOpen(false);
-    navigate(`/courses/${course.id}`);
+    navigate(`/student/course/${course.id}/learn`);
   };
 
   return (

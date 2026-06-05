@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="contact-item">
               <div className="footer-contact-icon"><MapPin size={16} /></div>
-              <span>Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Karadeo
+              <span>Flat No. 103, 1st Floor Indradeep, Complex, 117/N/47, AVON Market, Ambedkar Nagar, Navin Nagar, Kakadeo
                 Kanpur, Uttar Pradesh, 208005, India</span>
             </div>
           </div>

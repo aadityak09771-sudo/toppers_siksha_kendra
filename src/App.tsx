@@ -13,9 +13,9 @@ import { Terms } from './pages/Terms';
 
 import { Courses } from './pages/Courses';
 import { CourseDetails } from './pages/CourseDetails';
+import { LearningRoom } from './pages/LearningRoom';
 import { MyCourses } from './pages/MyCourses';
 import { MyProfile } from './pages/MyProfile';
-import { LearningRoom } from './pages/LearningRoom';
 import { Library } from './pages/Library';
 import { MyPurchases } from './pages/MyPurchases';
 import { DashboardCourses } from './pages/DashboardCourses';
@@ -27,6 +27,7 @@ import { StudentDashboardLayout } from './layouts/StudentDashboardLayout';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { ScrollToTop } from './utils/ScrollToTop';
 import { AuthModal } from './components/common/AuthModal/AuthModal';
+import { CourseLearningPage } from './components/dashboard/CourseLearningPage';
 
 const App: React.FC = () => {
   return (
@@ -34,7 +35,12 @@ const App: React.FC = () => {
       <ScrollToTop />
       <AuthModal />
       <Routes>
-        {/* Standalone Pages (No Main Header/Footer) */}        
+        {/* Standalone Pages (No Main Header/Footer) */}
+        <Route
+          path="/student/course/:courseId/learn"
+          element={<PrivateRoute><CourseLearningPage /></PrivateRoute>}
+        />
+
         {/* Main Layout Pages */}
         <Route path="*" element={
           <MainLayout>
@@ -44,7 +50,7 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/course-listing" element={<CourseListing />} />
               <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/:id" element={<CourseDetails />} />  
+              <Route path="/courses/:id" element={<CourseDetails />} />
               <Route path="/select-goal" element={<GoalSelection />} />
               
               {/* Dashboard Routes */}

@@ -36,7 +36,11 @@ export const CourseDetailsModal: React.FC<CourseDetailsModalProps> = ({
 
   const handleAction = (isBuyNow: boolean) => {
     if (actionText === 'Start Learning') {
-      onStartLearning(course);
+      if (onStartLearning) {
+        onStartLearning(course);
+      } else {
+        navigate(`/student/course/${course.id}/learn`);
+      }
       return;
     }
     if (!isLoggedIn) {
