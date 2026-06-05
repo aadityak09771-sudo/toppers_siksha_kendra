@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { VideoPlayer } from './VideoPlayer';
 import { CourseSidebar } from './CourseSidebar';
@@ -18,7 +18,6 @@ const mockCourseData = {
 };
 
 export const CourseLearningPage: React.FC = () => {
-  const { courseId } = useParams<{ courseId: string }>();
   const [currentLesson, setCurrentLesson] = useState(mockCourseData.lessons[0]);
 
   useEffect(() => {
